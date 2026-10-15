@@ -1,0 +1,54 @@
+﻿Backend Handoff Notes
+
+The backend is modular so multiple team members can work without repeatedly editing server.js.
+
+Route modules
+
+- src/routes/restaurant.js - restaurant details
+- src/routes/menu.js - menu and price-preview API
+- src/routes/gallery.js - gallery metadata
+- src/routes/promotions.js - promotions and promo validation
+- src/routes/cart.js - cart add/update/view/remove/clear
+- src/routes/delivery.js - delivery-radius validation
+- src/routes/payments.js - safe payment integration boundary
+- src/routes/openapi.js - OpenAPI contract endpoint
+
+Frontend rule
+
+Use relative paths:
+fetch("/api/menu")
+
+When Express serves the final frontend from public/, the same frontend works on every teammate's machine.
+
+Cart behavior
+
+Identical cart configurations merge automatically. The backend compares:
+
+- menu item
+- size
+- crust
+- toppings
+
+Topping order does not affect equality.
+
+The frontend can inspect the merged boolean returned by POST /api/cart/items.
+
+Debugging
+
+Every request receives an X-Request-Id response header. Controlled backend error responses also include requestId in JSON.
+
+API contract
+
+Use:
+docs/openapi.yaml
+
+or while the server is running:
+GET /api/openapi.yaml
+
+Prototype boundaries
+
+- Menu uses JSON seed data until the database layer replaces it.
+- Cart is in-memory and resets when Node restarts.
+- Delivery validation performs radius math; street addresses still require an external geocoder/provider.
+- Payment is deliberately a safe scaffold, not a fake processor.
+- HTTPS requires a certificate or suitable deployment environment.

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pizza Pie Parlor | Spaceport Arcade Pizza</title>
+  <link rel="stylesheet" href="/cart-demo/css/planet-theme.css">
+  <link rel="stylesheet" href="/cart-demo/css/promo-modal.css?v=2.4.3">
+  <script type="module" src="/cart-demo/js/main.js?v=2.4.4-fix2"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/team-demo.html" aria-label="Pizza Pie Parlor home"><span aria-hidden="true">✦</span> PIZZA PIE <strong>PARLOR</strong></a>
+    <nav aria-label="Main navigation"><a href="#menu">MENU</a><a href="#destination">OUR SPACEPORT</a><a href="/">MAIN SITE ↗</a></nav>
+    <button class="button button-primary" id="open-cart" aria-haspopup="dialog">Your Cart <span id="cart-count">(0)</span></button>
+  </header>
+  <main>
+    <section class="hero" id="destination">
+      <div class="hero-stars" aria-hidden="true"></div>
+      <div class="orbit orbit-one" aria-hidden="true"></div>
+      <div class="orbit orbit-two" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">★ NOW BOARDING THE PIZZA PIE PARLOR SPACECRAFT ★</p>
+          <div class="arcade-label">FAMILY PIZZA & ARCADE ADVENTURES <span>EST. 1988</span></div>
+          <h1>PIZZA THAT’S<br><em>OUT OF THIS WORLD.</em></h1>
+          <p>Bring the whole crew for fresh pizza, classic arcade fun, and a little cosmic adventure. Great food and good times are always on the menu.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#menu">ORDER NOW <span aria-hidden="true">➜</span></a>
+            <button class="button button-subtle" type="button" id="hero-cart-open">VIEW CART <span aria-hidden="true">↗</span></button>
+          </div>
+          <div class="hero-stats"><span><b>01</b> CHOOSE YOUR PIZZA</span><span><b>02</b> CUSTOMIZE</span><span><b>03</b> ENJOY</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Yellow retro space pizza delivery truck flying past a ringed planet">
+          <div class="planet planet-one"></div>
+          <div class="planet planet-two"></div>
+          <div class="ship-tag">PIZZA DELIVERY<br><strong>OUT OF THIS WORLD</strong></div>
+          <svg class="hero-truck" viewBox="0 0 660 410" role="img" aria-label="Yellow retro pizza truck with white roof, red stripes, and a rocket mounted on top">
+            <defs>
+              <linearGradient id="truck-y" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffe875"/><stop offset="1" stop-color="#e8ac21"/></linearGradient>
+              <linearGradient id="window-b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c8efff"/><stop offset=".95" stop-color="#396a92"/></linearGradient>
+              <filter id="car-shadow"><feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#050e28" flood-opacity=".55"/></filter>
+            </defs>
+            <g filter="url(#car-shadow)" transform="translate(20 34) rotate(-7 310 195)">
+              <path d="M97 139H393Q415 139 427 156L476 224H556Q574 224 578 245V296H50V246L76 166Q82 139 97 139Z" fill="url(#truck-y)" stroke="#172844" stroke-width="8" stroke-linejoin="round"/>
+              <path d="M100 146H392L420 191H70Z" fill="#fff9e8" stroke="#172844" stroke-width="7"/>
+              <path d="M392 147 456 225H315V147Z" fill="url(#window-b)" stroke="#172844" stroke-width="8"/>
+              <path d="M109 160H286V227H70L88 171Z" fill="url(#window-b)" stroke="#172844" stroke-width="8"/>
+              <path d="M79 243H567" stroke="#d73a30" stroke-width="30"/>
+              <path d="M77 262H568" stroke="#fff7e7" stroke-width="8"/>
+              <path d="M45 291H590" stroke="#d9dde2" stroke-width="15" stroke-linecap="round"/>
+              <rect x="189" y="177" width="143" height="65" rx="9" fill="#fff5db" stroke="#172844" stroke-width="6"/>
+              <text x="260" y="201" text-anchor="middle" font-size="17" font-family="Arial,sans-serif" font-weight="900" fill="#db3f33">PIZZA PIE</text>
+              <text x="260" y="223" text-anchor="middle" font-size="20" font-family="Arial,sans-serif" font-weight="900" fill="#173b77">PARLOR</text>
+              <circle cx="147" cy="300" r="53" fill="#172034" stroke="#e9edf4" stroke-width="7"/>
+              <circle cx="147" cy="300" r="26" fill="#8c9eaf" stroke="#fff" stroke-width="7"/>
+              <circle cx="475" cy="300" r="53" fill="#172034" stroke="#e9edf4" stroke-width="7"/>
+              <circle cx="475" cy="300" r="26" fill="#8c9eaf" stroke="#fff" stroke-width="7"/>
+              <rect x="475" y="232" width="42" height="17" rx="6" fill="#eecb72" stroke="#172844" stroke-width="4"/>
+              <g transform="translate(277 23)">
+                <path d="M0 111 38 18Q48 -4 60 18L97 111Z" fill="#f8f5e9" stroke="#192943" stroke-width="7"/>
+                <path d="M0 111H97L85 127H13Z" fill="#d83c32" stroke="#192943" stroke-width="5"/>
+                <path d="M43 21Q48 12 54 21" stroke="#db4338" stroke-width="8" stroke-linecap="round"/>
+                <circle cx="49" cy="78" r="21" fill="#4c9bd2" stroke="#192943" stroke-width="6"/>
+                <path d="M14 93 0 110H25ZM83 93 98 110H72Z" fill="#d83c32"/>
+              </g>
+              <path d="M295 17 306 -4 320 18" fill="none" stroke="#ffe45e" stroke-width="9" stroke-linecap="round"/>
+              <circle cx="549" cy="259" r="9" fill="#fff4b1"/>
+            </g>
+          </svg>
+          <div class="hero-visual-caption"><span>✦</span> OUT-OF-THIS-WORLD DELIVERY</div>
+        </div>
+      </div>
+      <div class="hero-bottom-bar"><span>FAMILY FUN</span><span>★</span><span>FRESHLY BAKED</span><span>★</span><span>GALACTICALLY GOOD</span><span>★</span><span>FAMILY FUN</span></div>
+    </section>
+    <section class="features-band" aria-label="Pizza parlor features">
+      <div><span>🚀</span><strong>FRESHLY MADE PIZZA</strong><small>Build a pie for your whole crew</small></div>
+      <div><span>🛸</span><strong>MADE FOR THE WHOLE CREW</strong><small>Family favorites and shareable sides</small></div>
+      <div><span>🪐</span><strong>EASY ONLINE ORDERING</strong><small>Clear prices and simple customization</small></div>
+    </section>
+    <section class="menu-section" id="menu" aria-labelledby="menu-title">
+      <div class="section-heading"><div><p class="eyebrow">WELCOME TO THE GALACTIC MENU</p><h2 id="menu-title">Find Your Favorite Pizza.</h2></div><p>Explore our signature pizzas, sides, and family favorites. Customize your order just the way you like it.</p></div>
+      <div id="menu-content" class="menu-content"><p>Loading live menu from backend…</p></div>
+    </section>
+  </main>
+  <div id="message" class="message" role="status" aria-live="polite"></div>
+  <div id="cart-overlay" class="overlay" hidden></div>
+  <aside class="cart-panel" id="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-heading" aria-hidden="true" tabindex="-1">
+    <header class="panel-heading"><div><p class="eyebrow">Your order</p><h2 id="cart-heading">Your Cart</h2></div><button class="icon-button" id="close-cart" aria-label="Close cart">×</button></header>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer"><div id="cart-totals"></div><div id="promo-summary" class="promo-summary" role="status" aria-live="polite"></div><div class="cart-actions"><button id="open-promo" class="button button-primary" type="button">Have a promo code?</button><button id="clear-cart" class="button button-subtle" type="button">Empty cart</button></div><p class="checkout-note">Promo discounts and updated totals are estimates only. Backend checkout/payment is not implemented.</p></div>
+  </aside>
+  <dialog id="customize-dialog" aria-labelledby="customize-title">
+    <form id="customize-form">
+      <div class="panel-heading"><h2 id="customize-title">Customize pizza</h2><button class="icon-button" type="button" id="close-customize" aria-label="Close customization">×</button></div>
+      <p id="customize-description"></p><div id="customize-options"></div>
+      <label class="field-label" for="add-quantity">Quantity</label><input id="add-quantity" name="quantity" type="number" min="1" max="99" value="1" required>
+      <button class="button button-primary wide" type="submit">Add to cart</button>
+    </form>
+  </dialog>
+  <dialog id="promo-dialog" aria-labelledby="promo-title">
+    <form id="promo-form">
+      <div class="panel-heading"><h2 id="promo-title">Unlock Your Space Savings!</h2><button class="icon-button" type="button" id="close-promo" aria-label="Close promo code dialog">×</button></div>
+      <p id="promo-description">Enter a code to check your discount.</p>
+      <label class="field-label" for="promo-code">Promo code</label>
+      <input id="promo-code" name="code" type="text" autocomplete="off" maxlength="64" required>
+      <button class="button button-primary wide" type="submit">Validate code</button>
+      <p id="promo-result" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
+  <footer>PIZZA PIE PARLOR · A RETRO-SPACE RESTAURANT CONCEPT · INDEPENDENT STUDENT DEMO</footer></body>
+</html>

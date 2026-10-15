@@ -1,0 +1,33 @@
+﻿Sprint Backend Support Map
+
+This maps the package to backend-related sprint work. It is a coordination aid, not a claim that one developer owns every task.
+
+| Task | Backend support in this package | Status / boundary |
+| 1.2 | GET /api/restaurant | Working prototype |
+| 2.1 | database/schema.sql and database/seed.sql | Schema scaffold ready for review |
+| 2.2 | GET /api/menu | Frontend-ready seed API; final database hookup still required |
+| 3.2 | POST /api/menu/price-preview | Server-side price verification; frontend dynamic UI still belongs in frontend |
+| 4.1 | Security middleware, request IDs, SECURITY.md, parameterized-query guidance | Baseline implemented; final DB queries must use parameters |
+| 5.2 | GET /api/gallery plus local WebP assets | Working prototype; replace test assets later |
+| 6.2 | GET /api/promotions | Working prototype |
+| 7.2 | /api/cart add/update/view/remove/clear plus identical-line merging | Working in-memory prototype; persistence can be added later |
+| 8.2 | POST /api/delivery/validate | Radius math works; street-address geocoding requires external provider/dataset |
+| 9.2 | POST /api/promotions/validate | Working prototype with edge-case validation |
+| 10.1 | /api/payments/* safe integration boundary | Scaffold only; real PCI-compliant gateway still required |
+| 10.2 | Optional HTTPS mode and no-card-storage rules | Backend support ready; final certificate/hosting setup still required |
+
+Frontend-ready paths
+/api/restaurant
+/api/menu
+/api/gallery
+/api/promotions
+/api/promotions/validate
+/api/cart
+/api/delivery/validate
+
+Integration helpers
+
+- GET /api/openapi.yaml
+- docs/FRONTEND_INTEGRATION.md
+- docs/api-examples.http
+- npm run smoke

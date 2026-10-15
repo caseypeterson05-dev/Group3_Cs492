@@ -1,0 +1,89 @@
+﻿PIZZA PIE PARLOR - UPGRADE GUIDE: ORIGINAL v2.1.3 -> CURRENT HANDOFF
+====================================================================
+HANDOFF BUNDLE: v2.5.0 (documentation and provenance update)
+BACKEND PACKAGE VERSION: 2.2.0 (from package.json; intentionally unchanged)
+ACTIVE WEBSITE: http://127.0.0.1:3000/team-demo.html (local server only)
+
+SUMMARY
+-------
+This ZIP is an UPGRADE to the original backend package, NOT a replacement
+project built from scratch. All 51 files from original v2.1.3 are retained.
+Of those, 45 remained byte-for-byte unchanged in the corrected handoff,
+and six were modified as noted below. The current ZIP adds documentation
+that explains and preserves the history. Application source code is
+identical to the last tested corrected handoff.
+
+WHAT CONTINUES FROM THE ORIGINAL v2.1.3
+---------------------------------------
+- Original Express route structure and working REST APIs
+- Restaurant / menu / promotion / promo-validation services
+- Pizza customization data, preview-pricing endpoints, JSON data files
+- Gallery, delivery radius, request IDs, security and payment scaffold
+- SQL schema and seed files (for future database integration)
+- docs/openapi.yaml, HTTP request examples, backend handoff guides
+- Original homepage (public/index.html) and photo assets
+- Windows run scripts and original API tests
+
+THE SIX EXISTING FILES THAT WERE MODIFIED
+-----------------------------------------
+1. src/services/cartService.js
+   Additional input validation, cart line limit, safer returned snapshots.
+2. package.json
+   Version changed from 2.1.3 to 2.2.0; test command discovers all
+   tests/*.test.js files rather than only tests/api.test.js.
+3. package-lock.json
+   The project version metadata was updated to match package.json.
+4. run-tests.cmd
+   Runs the full automatic test suite.
+5. README.md
+   Current easy-to-follow handoff guide (original README is archived).
+6. CHANGELOG.md
+   Combines original history with new cart/demo/handoff milestones.
+
+WHAT WAS ADDED AFTER THE ORIGINAL ZIP
+-------------------------------------
+- Interactive Sprint 7.1 cart UI; reusable frontend modules and CSS
+- Pizza Planet-inspired team-demo.html design, with editable truck SVG
+- Centered promo dialog with the right-side cart still visible on desktop
+- Promo validation with a visibly labeled ESTIMATED discounted total
+- Extra tests, including cart hardening and promo estimate handling
+- Cart 7.2 API document, design editing guide, and team instructions
+- Plain-text documentation suitable for Windows Notepad
+- This upgrade guide and the unmodified original backend README/history
+
+VERSION AND SCOPE CLARIFICATIONS
+--------------------------------
+The ZIP name identifies this handoff revision (v2.5.0). It does NOT
+claim new backend behavior or bump the backend package above 2.2.0.
+Tasks 1.2, 6.2 and 9.2 are documented as original project contributions.
+Task 7.1 provides the UI reference. Task 7.2 strengthens the API already
+partly present in v2.1.3. Promo input is assigned separately as Task 9.1;
+the display here is a demonstration, not a completed checkout workflow.
+
+IMPORTANT LIMITATIONS
+---------------------
+- Shopping carts are in memory, not stored persistently in the database.
+- Promo discount is an estimate; it does not change backend totals or tax.
+- Payment handling is a safe integration scaffold, not a real gateway.
+- The design is provisional and belongs to no final team decision.
+- This URL is localhost and is NOT a public team-accessible hosted link.
+
+HOW THE TEAM SHOULD MERGE THIS UPGRADE
+--------------------------------------
+1. Keep the team's current shared branch intact; make a new review branch.
+2. Compare code against the CURRENT TEAM REPO, not only the old v2.1.3 ZIP.
+3. Import frontend files under public/cart-demo/ and public/team-demo.html.
+4. Review src/services/cartService.js changes before merging. Preserve
+   any newer work your teammates may have made in the same service.
+5. Review package.json/package-lock.json/test discovery as a pair.
+6. Keep all previously existing backend routes, SQL assets, and API docs.
+7. Run npm.cmd ci, npm.cmd test, and npm.cmd start.
+8. Test add, customize, quantity, remove, and PIZZA20 on team-demo.html.
+9. Ask the team to approve the final design and the merge separately.
+
+For the earlier detailed technical explanation, see:
+  docs\history\README_BACKEND_v2.1.3.txt
+For a quick design handoff, see:
+  DESIGN_EDITING_GUIDE.txt
+For the exact sprint wording, see:
+  REQUIREMENTS_7_1_7_2.txt

@@ -1,0 +1,15 @@
+{
+  "name": "Pizza Pie Parlor",
+  "description": "A local pizza restaurant serving fresh pizzas and classic favorites.",
+  "address": "123 Main Street, Example City, ST 00000",
+  "phone": "(555) 555-1234",
+  "hours": {
+    "monday": "11:00 AM - 9:00 PM",
+    "tuesday": "11:00 AM - 9:00 PM",
+    "wednesday": "11:00 AM - 9:00 PM",
+    "thursday": "11:00 AM - 9:00 PM",
+    "friday": "11:00 AM - 10:00 PM",
+    "saturday": "11:00 AM - 10:00 PM",
+    "sunday": "12:00 PM - 8:00 PM"
+  }
+}

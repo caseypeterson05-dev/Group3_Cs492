@@ -1,0 +1,74 @@
+﻿PIZZA PIE PARLOR - HOW TO CHANGE THE WEBSITE LOOK (NOTEPAD)
+==========================================================
+This is a team demo. The Pizza Planet-inspired design is NOT final.
+All paths below are RELATIVE to the folder containing package.json.
+
+1) BEFORE CHANGING ANYTHING
+   Extract the ZIP fully, then create a backup (or a Git branch).
+   Open a source file with Right-click > Open with > Notepad.
+   If it opens in a browser, use Open with > Notepad instead.
+   Save normally with the same extension: .html, .css, or .js.
+   Avoid "Save As" .txt by mistake. Use UTF-8 encoding.
+
+2) CHANGE COLORS, FONTS, BUTTONS AND PIZZA CARDS
+   File: public\cart-demo\css\planet-theme.css
+   The stylesheet is formatted into individual CSS blocks for reading.
+   Search for the final :root section under "Pizza Planet-inspired".
+   Later CSS rules can override earlier ones; check the last occurrence
+   of a selector if a change does not seem to work.
+
+3) CHANGE THE PROMO POP-UP AND BACKDROP
+   File: public\cart-demo\css\promo-modal.css
+   Change width, spacing, backgrounds and position only.
+   DO NOT alter the promo validation logic for a color/style change.
+   The desktop intent: centered promo input AND visible cart on the right.
+
+4) CHANGE THE DELIVERY TRUCK, HERO AND PAGE WORDING
+   File: public\team-demo.html
+   Find class="hero-truck" to locate the inline SVG vehicle.
+   Keep the menu and cart elements/IDs that JavaScript looks up.
+   The text on the hero is written directly in this HTML page.
+
+5) CHANGE BUTTON AND DIALOG WORDING
+   File: public\cart-demo\js\site-content.js
+   Edit the text inside quotes. Keep the object keys the same.
+
+6) CHANGE THE MENU CARD OR CART ITEM MARKUP
+   File: public\cart-demo\js\view.js
+   This renders live data. Adjust carefully; do not hardcode products
+   or prices. Check API-driven add, quantity, remove and refresh.
+
+7) NEVER CHANGE THESE JUST FOR DESIGN
+   public\cart-demo\js\api.js
+   public\cart-demo\js\cart.js
+   public\cart-demo\js\main.js
+   public\cart-demo\js\promo-preview.js
+   src\routes\cart.js
+   src\services\cartService.js
+
+8) CRITICAL PAGE DISTINCTION
+   public\team-demo.html is the CURRENT demonstration.
+   public\cart-demo.html is an OLDER separate reference demo.
+   CSS named theme.css, layout.css and cart.css applies to that older
+   demo, not to team-demo.html. Editing those won't reskin this page.
+
+9) SEE YOUR CHANGE
+   Start backend with run-server.cmd or npm.cmd start.
+   Browser URL: http://127.0.0.1:3000/team-demo.html
+   Press Ctrl+F5 to reload any cached CSS/JS.
+   The URL is LOCAL; do not send it to teammates as a public link.
+
+10) CHECK THE FUNCTIONALITY AFTER EDITING
+    - Four menu products load from /api/menu
+    - Customization, add, cart quantity and remove all work
+    - PIZZA20 updates an ESTIMATED price without changing actual tax
+    - Promo remains readable beside the cart at desktop widths
+    - Empty cart, mobile widths and the browser Console work
+    - All automated tests pass (npm.cmd test or run-tests.cmd)
+
+For more: README.txt and DOCUMENT_INDEX.txt (ordinary text files).
+
+11) WANT TO UNDERSTAND THE ORIGINAL BACKEND BEFORE EDITING?
+    Read docs\history\README_BACKEND_v2.1.3.txt for original
+    API architecture, then UPGRADE_FROM_v2.1.3.txt for changes.
+    Older docs describe v2.1.3, not this current launch process.

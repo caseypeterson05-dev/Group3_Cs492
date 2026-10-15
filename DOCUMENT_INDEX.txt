@@ -1,0 +1,70 @@
+﻿PIZZA PIE PARLOR - FILE DIRECTORY (UPGRADE HANDOFF v2.5.0)
+==========================================================
+All paths are relative to this extracted project folder.
+Read .txt files with Windows Notepad. Browser links are in OPEN_HANDOFF.html.
+
+START HERE
+  START_HERE.txt                         Fast Windows startup
+  README.txt                             Current full project overview
+  UPGRADE_FROM_v2.1.3.txt                Original-to-current comparison
+  DESIGN_EDITING_GUIDE.txt               Changing design safely
+  REQUIREMENTS_7_1_7_2.txt              Exact Sprint 7.1/7.2 boundaries
+  TROUBLESHOOTING.txt                    Windows/browser problems
+  OPEN_HANDOFF.html                      Clickable guide (open in browser)
+
+ORIGINAL BACKEND HISTORY - PRESERVED
+  docs\history\ABOUT_THIS_ARCHIVE.txt
+  docs\history\README_BACKEND_v2.1.3.txt   Easy-to-read original README
+  docs\history\README_BACKEND_v2.1.3.md    Exact original README
+  docs\history\CHANGELOG_BACKEND_v2.1.3.txt
+  docs\history\CHANGELOG_BACKEND_v2.1.3.md Exact original changelog
+
+ACTIVE DESIGN (TEAM DEMO)
+  public\team-demo.html                Homepage, truck SVG, copy, markup
+  public\cart-demo\css\planet-theme.css
+  public\cart-demo\css\promo-modal.css
+  public\cart-demo\js\site-content.js
+  public\cart-demo\js\view.js  (advanced: live menu/cart markup)
+
+FUNCTIONALITY - DO NOT CHANGE FOR STYLING ALONE
+  public\cart-demo\js\api.js
+  public\cart-demo\js\cart.js
+  public\cart-demo\js\main.js
+  public\cart-demo\js\promo-preview.js
+  src\routes\cart.js
+  src\services\cartService.js
+
+OTHER ORIGINAL FEATURES (UNCHANGED)
+  public\index.html                   Original site/landing page
+  public\app.js, public\styles.css   Original frontend assets
+  public\images\*                    Original website photos
+  data\*.json                          Original seed data
+  database\schema.sql                  Original starter SQL schema
+  database\seed.sql                    Original starter SQL content
+  src\routes\*.js                    Existing backend routes
+  src\services\menuService.js        Menu / pricing
+  src\services\promotionService.js   Promotions
+  docs\openapi.yaml                    Original API contract
+  docs\api-examples.http               Original example API calls
+
+OLDER ALTERNATE CART DEMO (NOT THE TEAM DEMO THEME)
+  public\cart-demo.html
+  public\cart-demo\css\theme.css
+  public\cart-demo\css\layout.css
+  public\cart-demo\css\cart.css
+
+TECHNICAL AND TEST DOCUMENTS
+  docs\BACKEND_HANDOFF.txt
+  docs\FRONTEND_INTEGRATION.txt
+  docs\SPRINT_BACKEND_MAP.txt
+  docs\TASK_7_2_CART_API.txt
+  docs\TESTING.txt
+  TEAM_HANDOFF.txt, DESIGN_HANDOFF_7_1.txt
+  CHANGELOG.txt                         Original + upgrade history
+  SECURITY.txt, .env.example            Environment / safety
+  package.json, package-lock.json       Node dependencies and scripts
+  tests\*.test.js                      Complete automatic test suite
+  run-server.cmd, run-tests.cmd, run-smoke.cmd  Windows helpers
+
+LOCAL WEB PAGE: http://127.0.0.1:3000/team-demo.html
+This address only works after starting Node on the same computer.

@@ -1,0 +1,57 @@
+# Changelog
+
+## 2.1.3
+
+- Rewrote the main README to sound more natural and closer to how I would explain the project to the group.
+- Kept the technical setup, API routes, testing instructions, and project boundaries.
+- No backend logic or API behavior changed in this release.
+
+## 2.1.2
+
+- Fixed the Windows `.cmd` helper scripts so they resolve and launch the full `node.exe` path reliably.
+- Preserved the separation between automated API tests and live-server smoke checks.
+- Updated the README with the verified test status: 23 automated API tests passed and 8 live smoke checks passed.
+- No API contract or business-logic behavior changes from 2.1.1.
+
+## 2.1.1
+
+- Prevented the live-server smoke checker from being auto-discovered by Node's unit-test runner.
+- Restricted `npm test` to `tests/api.test.js`.
+- Added Windows `.cmd` helpers that fall back to `C:\\Program Files\\nodejs\\node.exe` when Node is not available to child shells through PATH.
+- Kept the smoke test separate because it intentionally expects the backend server to already be running.
+
+## 2.1.0
+
+### Added
+
+- Automatic merging of identical cart lines.
+- Topping-order-independent cart comparison.
+- Combined identical-line quantity limit of 99.
+- `merged` flag in add-to-cart responses.
+- Request IDs through `X-Request-Id`.
+- Version and request ID in health response.
+- OpenAPI 3.0 contract at `docs/openapi.yaml`.
+- Runtime OpenAPI endpoint at `GET /api/openapi.yaml`.
+- Expanded automated test coverage.
+- Cross-platform `npm run smoke` integration smoke test.
+- Graceful SIGINT/SIGTERM server shutdown.
+- Additional frontend/testing documentation.
+
+### Preserved
+
+- Restaurant information API.
+- Promotions API and promotion validation.
+- Menu and price-preview API.
+- Gallery API.
+- Cart CRUD behavior and totals.
+- Delivery-radius validation.
+- Payment safety boundary.
+- Security headers and optional HTTPS/CORS support.
+
+### Intentionally deferred
+
+- Persistent cart database storage.
+- Final database service hookup.
+- Street-address geocoding provider.
+- Real payment gateway provider integration.
+- Final HTTPS certificate/hosting setup.

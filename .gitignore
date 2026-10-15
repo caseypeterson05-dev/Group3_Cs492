@@ -1,0 +1,25 @@
+# Dependencies and generated outputs
+node_modules/
+coverage/
+.nyc_output/
+*.log
+
+# Local config and secrets. The example is intentionally tracked.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+certs/
+
+# Local database state (keep the SQL schema and seed scripts)
+*.sqlite
+*.sqlite3
+*.db
+
+# OS/editor metadata
+.DS_Store
+Thumbs.db
+__MACOSX/
+._*

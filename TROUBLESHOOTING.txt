@@ -1,0 +1,39 @@
+﻿PIZZA PIE PARLOR - WINDOWS TROUBLESHOOTING
+========================================
+Problem: npm.ps1 is blocked by PowerShell's execution policy.
+Solution: Use npm.cmd ci, npm.cmd test, npm.cmd start instead of npm.
+
+Problem: 'node' is not recognized, but npm.cmd works.
+Solution: In the current PowerShell window, run:
+  $env:Path = "C:\Program Files\nodejs;$env:Path"
+Then run node --version and npm.cmd test again. If node.exe is missing,
+install Node.js 20+ and reopen the terminal.
+
+Problem: ENOENT package.json.
+Solution: Change into the EXTRACTED folder containing package.json first.
+Do not execute commands from your home folder or from inside the ZIP.
+
+Problem: The menu says "Loading live menu from backend" forever.
+Solution: Open http://127.0.0.1:3000/api/menu in your browser.
+If it shows JSON, open DevTools with Ctrl+Shift+J to see JS errors.
+After changes press Ctrl+F5. If it fails, check that npm.cmd start ran.
+
+Problem: The server won't start on port 3000.
+Solution: Stop your earlier copy by pressing Ctrl+C in its terminal.
+Only one server should bind the same local port.
+
+Problem: OPEN_HANDOFF.html file links open in a browser, not Notepad.
+Solution: That's just the file viewer. Right-click the actual file in
+Windows Explorer, choose Open with > Notepad to edit it.
+
+Problem: Local demo link does not work on your teammate's PC.
+Solution: 127.0.0.1 always refers to the computer opening the link.
+The teammate must run their own extracted copy and start the server.
+The HTML file by itself is not a backend-connected working preview.
+
+Problem: Running a .cmd file flashes and closes immediately.
+Solution: Use PowerShell in this folder to run npm.cmd ci, npm.cmd test,
+and npm.cmd start separately so any error text stays visible.
+
+Important: Promo validation changes an estimated display only.
+No real card data or payment processing is part of this demo.

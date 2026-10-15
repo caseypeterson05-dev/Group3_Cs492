@@ -1,0 +1,21 @@
+﻿SPRINT 2: TASKS 7.1 AND 7.2 - WHAT THIS DEMO COVERS
+====================================================
+7.1 - Develop the shopping cart UI component.
+    Implemented as a working cart drawer with add, view, customization,
+    quantities, remove and server-based totals. The final team design
+    and browser acceptance are still pending.
+
+7.2 - Implement backend API for cart operations (add, update, view).
+    Implemented in src\routes\cart.js and src\services\cartService.js.
+    This includes view/add/update/remove/clear and input validation.
+    Data is in memory and is lost when the server restarts.
+
+9.1 - The sprint plan separately assigns a promo-code input.
+    The team demo shows a working PROMO PREVIEW using the promotion
+    validation endpoint, but it is not a finished checkout page.
+    It does not persist promotional changes in the cart backend.
+
+STATUS: Implementation present; final group review/merge still required.
+To run all automated tests: npm.cmd test.
+To test the real UI: http://127.0.0.1:3000/team-demo.html
+This URL is local and requires a running server.

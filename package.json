@@ -1,0 +1,20 @@
+{
+  "name": "pizza-pie-parlor-backend",
+  "version": "2.2.0",
+  "private": true,
+  "description": "Portable local Express backend prototype for the CS492 Pizza Pie Parlor project.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test tests/*.test.js",
+    "test:verbose": "node --test --test-reporter spec tests/*.test.js",
+    "smoke": "node scripts/smoke-check.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

@@ -1,0 +1,26 @@
+﻿WHY THE ORIGINAL BACKEND DOCUMENTATION IS INCLUDED
+==================================================
+The original v2.1.3 package included an extensive backend README.
+The corrected 7.1/7.2 handoff previously replaced it with a shorter guide.
+This release preserves the original documentation without making it the
+active guide to the current implementation.
+
+ORIGINAL FILES (byte-for-byte copies):
+  docs\history\README_BACKEND_v2.1.3.md
+  docs\history\CHANGELOG_BACKEND_v2.1.3.md
+
+NOTEPAD READING COPIES (plain text):
+  docs\history\README_BACKEND_v2.1.3.txt
+  docs\history\CHANGELOG_BACKEND_v2.1.3.txt
+
+The original README documents these earlier assigned tasks:
+  1.2 - Restaurant information backend
+  6.2 - Promotions backend
+  9.2 - Promotion-code validation
+
+It also explains initial API architecture, JSON seed data, SQL starter
+files, delivery validation, safety boundaries, smoke tests, and portable
+localhost setup. The current release adds 7.1 UI and 7.2 API hardening.
+
+Please use the CURRENT files in the main folder for startup, design editing,
+and testing. Do not copy the old README over today's README.

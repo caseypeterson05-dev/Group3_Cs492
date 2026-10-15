@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pizza Pie Parlor | Cart Demo 7.1</title>
+  <link rel="stylesheet" href="/cart-demo/css/theme.css">
+  <link rel="stylesheet" href="/cart-demo/css/layout.css">
+  <link rel="stylesheet" href="/cart-demo/css/cart.css">
+  <script type="module" src="/cart-demo/js/main.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/cart-demo.html" aria-label="Pizza Pie Parlor home"><span aria-hidden="true">◉</span> PIZZA PIE <strong>PARLOR</strong></a>
+    <nav aria-label="Main navigation"><a href="#menu">Mission Menu</a><a href="/">Original site</a></nav>
+    <button class="button button-primary" id="open-cart" aria-haspopup="dialog">Your Cart <span id="cart-count">(0)</span></button>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">A retro space-pizza concept · Sprint 7.1</p>
+      <h1>Pizza that's <em>out of this world.</em></h1>
+      <p>Choose your pizza, customize your toppings, and fuel up for your next mission.</p>
+      <a class="button button-primary" href="#menu">Explore the menu ↓</a>
+      <div class="truck" aria-label="Illustrated retro pizza delivery truck"><span class="truck-cab">▰</span> <span>PLANET EXPRESS</span> <span>✦</span></div>
+    </section>
+    <section class="menu-section" id="menu" aria-labelledby="menu-title">
+      <div class="section-heading"><div><p class="eyebrow">Choose your mission</p><h2 id="menu-title">Menu</h2></div><p>Live menu and prices from our backend.</p></div>
+      <div id="menu-content" class="menu-content"><p>Loading menu…</p></div>
+    </section>
+  </main>
+  <div id="message" class="message" role="status" aria-live="polite"></div>
+  <div id="cart-overlay" class="overlay" hidden></div>
+  <aside class="cart-panel" id="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-heading" aria-hidden="true" tabindex="-1">
+    <header class="panel-heading"><div><p class="eyebrow">Your order</p><h2 id="cart-heading">Mission Cargo</h2></div><button class="icon-button" id="close-cart" aria-label="Close cart">×</button></header>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-footer"><div id="cart-totals"></div><button id="clear-cart" class="button button-subtle" type="button">Empty cart</button><p class="checkout-note">Checkout is not part of this demonstration. Prices are calculated by the server.</p></div>
+  </aside>
+  <dialog id="customize-dialog" aria-labelledby="customize-title">
+    <form id="customize-form">
+      <div class="panel-heading"><h2 id="customize-title">Customize pizza</h2><button class="icon-button" type="button" id="close-customize" aria-label="Close customization">×</button></div>
+      <p id="customize-description"></p><div id="customize-options"></div>
+      <label class="field-label" for="add-quantity">Quantity</label><input id="add-quantity" name="quantity" type="number" min="1" max="99" value="1" required>
+      <button class="button button-primary wide" type="submit">Add to cart</button>
+    </form>
+  </dialog>
+  <footer>Pizza Pie Parlor · Replaceable visual prototype · Not affiliated with Disney or Pixar.</footer>
+</body>
+</html>

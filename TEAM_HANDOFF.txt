@@ -1,0 +1,22 @@
+﻿PIZZA PIE PARLOR - TEAM HANDOFF SUMMARY
+======================================
+This release is an UPGRADE to the originally shared backend v2.1.3,
+not a fresh replacement. No original project files were deleted.
+Its detailed original README is preserved in docs\history.
+
+Start with README.txt or START_HERE.txt.
+For a clickable file guide, open OPEN_HANDOFF.html in a browser.
+For an explanation of added and changed files, use:
+  UPGRADE_FROM_v2.1.3.txt
+
+Sprint 7.1 provides a working shopping-cart reference UI.
+Sprint 7.2 strengthens the original cart API.
+Task 9.1 promo entry is separate; the promo discount in this demo is
+an ESTIMATE only and is not a live checkout discount.
+
+The Pizza Planet-inspired theme is provisional. Designers can edit
+colors, truck SVG, page copy, and layouts without replacing the API.
+See DESIGN_EDITING_GUIDE.txt for what to edit and what to leave alone.
+
+Don't overwrite the team's existing branch without comparing changes.
+Before merging: run all tests and verify the live demo in a browser.
