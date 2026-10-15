@@ -1,0 +1,37 @@
+﻿TASK 7.2 - CART API REFERENCE
+============================
+The cart is stored in server memory; restarting the server clears it.
+All routes below are relative to the running server.
+Base address: http://127.0.0.1:3000  (LOCAL ONLY)
+
+GET    /api/cart                 Get cart and current totals
+POST   /api/cart/items           Add item or merge identical line
+PATCH  /api/cart/items/:lineId   Change existing line quantity
+DELETE /api/cart/items/:lineId   Remove one line
+DELETE /api/cart                 Empty the cart
+
+Send an X-Cart-Id header with a unique, hard-to-guess random value on
+EVERY cart request. If absent, this prototype uses a shared demo cart.
+These IDs alone are NOT authentication, so do not use as public security.
+
+POST JSON example:
+{"itemId":"pepperoni","quantity":2,"customization":
+ {"sizeId":"medium","crustId":"hand-tossed", "toppingIds":["mushrooms"]}}
+
+PATCH JSON example: {"quantity":3}
+Quantity must be an integer 1 to 99. DELETE a line to remove it.
+The backend calculates prices. The browser must not supply a trusted
+price. Identical customizations merge; cart state is independent per ID.
+
+The backend returns cart items, subtotal, tax and total. Promo previews
+are NOT applied to the saved cart or server-side checkout calculation.
+
+FOR DEVELOPERS:
+  src/routes/cart.js                 HTTP endpoint handlers
+  src/services/cartService.js        Validation and pricing logic
+  tests/cart-72.test.js             Focused tests
+  docs/openapi.yaml                 Complete API schema
+  docs/TASK_7_2_CART_API.md        Markdown version of this guide
+
+Run the full test suite with: npm.cmd test
+Run live smoke checks after startup: npm.cmd run smoke

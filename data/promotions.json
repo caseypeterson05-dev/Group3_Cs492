@@ -1,0 +1,32 @@
+[
+  {
+    "code": "PIZZA20",
+    "title": "20% Off Pizza Night",
+    "description": "Save 20% on orders of $20 or more.",
+    "type": "percent",
+    "value": 20,
+    "minimumSubtotal": 20,
+    "active": true,
+    "terms": "Minimum $20 subtotal. One promotion per order."
+  },
+  {
+    "code": "SAVE5",
+    "title": "$5 Off",
+    "description": "Save $5 on orders of $25 or more.",
+    "type": "fixed",
+    "value": 5,
+    "minimumSubtotal": 25,
+    "active": true,
+    "terms": "Minimum $25 subtotal. One promotion per order."
+  },
+  {
+    "code": "FAMILY10",
+    "title": "Family Night Discount",
+    "description": "Save 10% on orders of $40 or more.",
+    "type": "percent",
+    "value": 10,
+    "minimumSubtotal": 40,
+    "active": true,
+    "terms": "Minimum $40 subtotal. One promotion per order."
+  }
+]

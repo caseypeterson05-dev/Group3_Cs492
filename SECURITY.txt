@@ -1,0 +1,51 @@
+﻿Security Notes
+
+This prototype includes a defensive baseline intended for a class project and local/team development.
+
+Implemented controls
+
+- Express X-Powered-By disabled.
+- X-Content-Type-Options: nosniff.
+- X-Frame-Options: DENY.
+- Content Security Policy.
+- Referrer Policy.
+- Permissions Policy.
+- JSON request-body limit.
+- Controlled malformed-JSON responses.
+- Request IDs through X-Request-Id for debugging.
+- Optional explicit CORS origin.
+- Optional HTTPS startup with certificate/key paths.
+- Raw card/payment details are rejected by the payment scaffold.
+- No raw card data is written to local project storage.
+- Menu/cart pricing is recalculated server-side instead of trusting browser-submitted prices.
+- Invalid menu/topping/cart/delivery inputs are rejected.
+
+Database rule
+
+When the JSON menu scaffold is replaced by a database, all SQL queries must use parameterized statements or prepared queries.
+
+Do not concatenate user-supplied values into SQL strings.
+
+Secrets
+
+Do not commit:
+
+- payment provider secret keys
+- database credentials
+- SSL private keys
+- personal server credentials
+- production .env files
+
+Use environment variables or the team's approved secret-management mechanism.
+
+Payment boundary
+
+The backend must never accept or store raw card numbers or security codes.
+
+The final payment implementation should use the selected PCI-compliant provider's supported browser SDK/tokenization flow and send only provider-approved tokens/session identifiers to this backend.
+
+HTTPS
+
+HTTPS support exists in server.js, but local HTTP remains the default for portable development.
+
+The final HTTPS acceptance criterion requires a certificate or an HTTPS-capable deployment/reverse-proxy environment.

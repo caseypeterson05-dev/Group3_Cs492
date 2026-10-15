@@ -1,0 +1,26 @@
+[
+  {
+    "id": "pizza-hero",
+    "url": "/images/pizza-hero.webp",
+    "alt": "Fresh pizza on a wooden serving board",
+    "width": 960,
+    "height": 540,
+    "format": "webp"
+  },
+  {
+    "id": "dining-room",
+    "url": "/images/dining-room.webp",
+    "alt": "Pizza Pie Parlor dining room",
+    "width": 960,
+    "height": 540,
+    "format": "webp"
+  },
+  {
+    "id": "garlic-knots",
+    "url": "/images/garlic-knots.webp",
+    "alt": "Garlic knots served with dipping sauce",
+    "width": 960,
+    "height": 540,
+    "format": "webp"
+  }
+]

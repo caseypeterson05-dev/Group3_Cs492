@@ -1,0 +1,119 @@
+{
+  "categories": [
+    {
+      "id": "pizzas",
+      "name": "Pizzas",
+      "sortOrder": 1
+    },
+    {
+      "id": "sides",
+      "name": "Sides",
+      "sortOrder": 2
+    },
+    {
+      "id": "drinks",
+      "name": "Drinks",
+      "sortOrder": 3
+    }
+  ],
+  "items": [
+    {
+      "id": "classic-cheese",
+      "categoryId": "pizzas",
+      "name": "Classic Cheese Pizza",
+      "description": "Pizza sauce, mozzarella, and parmesan.",
+      "basePrice": 10.99,
+      "customizable": true,
+      "active": true
+    },
+    {
+      "id": "pepperoni",
+      "categoryId": "pizzas",
+      "name": "Pepperoni Pizza",
+      "description": "Pizza sauce, mozzarella, and pepperoni.",
+      "basePrice": 12.99,
+      "customizable": true,
+      "active": true
+    },
+    {
+      "id": "garlic-knots",
+      "categoryId": "sides",
+      "name": "Garlic Knots",
+      "description": "Baked dough knots with garlic butter and parmesan.",
+      "basePrice": 6.49,
+      "customizable": false,
+      "active": true
+    },
+    {
+      "id": "fountain-drink",
+      "categoryId": "drinks",
+      "name": "Fountain Drink",
+      "description": "Choice of available fountain beverage.",
+      "basePrice": 2.49,
+      "customizable": false,
+      "active": true
+    }
+  ],
+  "options": {
+    "sizes": [
+      {
+        "id": "small",
+        "name": "Small",
+        "priceModifier": 0
+      },
+      {
+        "id": "medium",
+        "name": "Medium",
+        "priceModifier": 2.5
+      },
+      {
+        "id": "large",
+        "name": "Large",
+        "priceModifier": 5
+      }
+    ],
+    "crusts": [
+      {
+        "id": "hand-tossed",
+        "name": "Hand Tossed",
+        "priceModifier": 0
+      },
+      {
+        "id": "thin",
+        "name": "Thin Crust",
+        "priceModifier": 0
+      },
+      {
+        "id": "stuffed",
+        "name": "Stuffed Crust",
+        "priceModifier": 2.5
+      }
+    ],
+    "toppings": [
+      {
+        "id": "pepperoni",
+        "name": "Pepperoni",
+        "priceModifier": 1.5,
+        "active": true
+      },
+      {
+        "id": "mushrooms",
+        "name": "Mushrooms",
+        "priceModifier": 1.0,
+        "active": true
+      },
+      {
+        "id": "onions",
+        "name": "Onions",
+        "priceModifier": 0.75,
+        "active": true
+      },
+      {
+        "id": "olives",
+        "name": "Black Olives",
+        "priceModifier": 1.0,
+        "active": true
+      }
+    ]
+  }
+}

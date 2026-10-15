@@ -1,0 +1,17 @@
+/* DESIGN TEAM: START HERE. Change these values to reskin the entire cart demo.
+   JavaScript never depends on colors, fonts, or spacing. */
+:root {
+  --page-bg: #101c34;
+  --panel-bg: #172746;
+  --card-bg: #233658;
+  --text: #f7f8ff;
+  --muted: #bdc9e1;
+  --accent: #ffce3b;
+  --accent-text: #21213d;
+  --secondary: #f2524b;
+  --border: #435373;
+  --shadow: 0 18px 56px #080e20a6;
+  --corner: 18px;
+  --font: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --content-width: 1120px;
+}

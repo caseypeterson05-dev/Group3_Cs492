@@ -1,0 +1,70 @@
+@base = http://127.0.0.1:3000
+@cart = demo-http-client
+
+### Health
+GET {{base}}/api/health
+
+### Restaurant
+GET {{base}}/api/restaurant
+
+### Menu
+GET {{base}}/api/menu
+
+### Price preview
+POST {{base}}/api/menu/price-preview
+Content-Type: application/json
+
+{
+  "itemId": "classic-cheese",
+  "customization": {
+    "sizeId": "large",
+    "crustId": "stuffed",
+    "toppingIds": ["pepperoni", "mushrooms"]
+  }
+}
+
+### Promotions
+GET {{base}}/api/promotions
+
+### Validate promotion
+POST {{base}}/api/promotions/validate
+Content-Type: application/json
+
+{
+  "code": "PIZZA20",
+  "subtotal": 50
+}
+
+### View cart
+GET {{base}}/api/cart
+X-Cart-Id: {{cart}}
+
+### Add cart item
+POST {{base}}/api/cart/items
+Content-Type: application/json
+X-Cart-Id: {{cart}}
+
+{
+  "itemId": "classic-cheese",
+  "quantity": 2,
+  "customization": {
+    "sizeId": "large",
+    "crustId": "stuffed",
+    "toppingIds": ["pepperoni", "mushrooms"]
+  }
+}
+
+### Delivery validation
+POST {{base}}/api/delivery/validate
+Content-Type: application/json
+
+{
+  "latitude": 39.7395,
+  "longitude": -104.9900
+}
+
+### Payment integration status
+GET {{base}}/api/payments/status
+
+### OpenAPI
+GET {{base}}/api/openapi.yaml

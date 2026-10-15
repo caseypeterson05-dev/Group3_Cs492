@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Pie Parlor</title>
+    <meta name="description" content="Fresh pizzas and classic favorites. Hours, location, and phone for Pizza Pie Parlor.">
+    <link rel="preload" href="/home/fonts/alfa-slab-one-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/home/home.css">
+    <script src="/home/home.js" defer></script>
+    <!-- Menu, customize, cart, and promo logic: teammate's Task 7.1 / 7.2 / 9.1 code, used unchanged. -->
+    <script type="module" src="/cart-demo/js/main.js"></script>
+    <!-- Homepage wording for that shared code. Must load after main.js. -->
+    <script type="module" src="/home/home-cart.js"></script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Task 1.1: Customer homepage. Restaurant details load from GET /api/restaurant (Task 1.2). -->
+
+    <header class="topbar">
+        <div class="wrap topbar-inner">
+            <a class="wordmark" href="/home/">Pizza Pie Parlor</a>
+            <nav aria-label="Page sections">
+                <ul class="nav-list">
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#hours">Hours</a></li>
+                    <li><a href="#find-us">Find us</a></li>
+                </ul>
+            </nav>
+            <button id="open-cart" class="cart-button" type="button" aria-haspopup="dialog" aria-controls="cart-panel">
+                <svg class="cart-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2.2l2.1 10.2a1.5 1.5 0 0 0 1.5 1.2h8.4a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6.4"/><circle cx="9.5" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg>
+                <span>Cart</span>
+                <span id="cart-count" class="cart-count">(0)</span>
+            </button>
+        </div>
+    </header>
+
+    <main id="main">
+
+        <section class="hero" aria-labelledby="restaurant-name">
+            <div class="wrap hero-inner">
+                <div class="hero-text">
+                    <h1 id="restaurant-name" class="hero-name">Pizza Pie Parlor</h1>
+
+                    <p id="open-status" class="open-status" aria-live="polite">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        <span id="open-status-text">Checking today's hours</span>
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button button-light" href="#menu">Order online</a>
+                        <a id="call-button" class="button button-outline" href="#find-us">Call us</a>
+                    </div>
+                </div>
+
+                <svg class="pie" viewBox="0 0 400 400" role="img" aria-labelledby="pie-title">
+                    <title id="pie-title">Illustration of a pepperoni pizza with one slice pulled out</title>
+                    <g class="pie-whole">
+                        <path class="crust" d="M200 200 L200 20 A180 180 0 1 1 44.1 110 Z"/>
+                        <path class="sauce" d="M200 200 L200 42 A158 158 0 1 1 63.2 121 Z"/>
+                        <path class="cheese" d="M200 200 L200 52 A148 148 0 1 1 71.8 126 Z"/>
+                        <circle class="pep" cx="270" cy="120" r="20"/>
+                        <circle class="pep" cx="300" cy="215" r="22"/>
+                        <circle class="pep" cx="245" cy="290" r="20"/>
+                        <circle class="pep" cx="150" cy="300" r="21"/>
+                        <circle class="pep" cx="95" cy="215" r="19"/>
+                        <circle class="pep" cx="205" cy="200" r="18"/>
+                        <circle class="basil" cx="235" cy="165" r="7"/>
+                        <circle class="basil" cx="175" cy="250" r="6"/>
+                        <circle class="basil" cx="275" cy="260" r="6"/>
+                        <path class="cut" d="M200 200 L355.9 110 M200 200 L355.9 290 M200 200 L200 380 M200 200 L44.1 290"/>
+                    </g>
+                    <g class="pie-slice">
+                        <path class="crust" d="M200 200 L44.1 110 A180 180 0 0 1 200 20 Z"/>
+                        <path class="sauce" d="M200 200 L63.2 121 A158 158 0 0 1 200 42 Z"/>
+                        <path class="cheese" d="M200 200 L71.8 126 A148 148 0 0 1 200 52 Z"/>
+                        <circle class="pep" cx="150" cy="105" r="18"/>
+                        <circle class="basil" cx="178" cy="150" r="6"/>
+                    </g>
+                </svg>
+            </div>
+        </section>
+
+        <section id="menu" class="menu-section" aria-labelledby="menu-title">
+            <div class="wrap">
+                <div class="menu-head">
+                    <div>
+                        <h2 id="menu-title">Menu</h2>
+                        <p class="menu-intro">Pick a pizza, choose your size, crust, and toppings, and we'll add it to your cart.</p>
+                    </div>
+                    <button id="hero-cart-open" class="button button-subtle" type="button">View your cart</button>
+                </div>
+                <div id="menu-content" class="menu-content">
+                    <p class="menu-loading">Loading the menu</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="wrap info-grid">
+
+            <section id="about" class="about" aria-labelledby="about-heading">
+                <h2 id="about-heading">About us</h2>
+                <p id="restaurant-description" class="lede">A local pizza restaurant serving fresh pizzas and classic favorites.</p>
+                <p>We stretch our dough by hand every morning, simmer the sauce low and slow, and bake every pie until the cheese bubbles and the crust turns golden. Come sit in the dining room, or grab a box to take home.</p>
+            </section>
+
+            <section id="hours" class="hours" aria-labelledby="hours-heading">
+                <h2 id="hours-heading">Hours</h2>
+                <div class="letterboard">
+                    <table class="letterboard-table">
+                        <caption class="visually-hidden">Opening hours for each day of the week</caption>
+                        <tbody id="hours-rows">
+                            <tr><td colspan="2" class="board-message">Loading hours</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="find-us" class="find-us" aria-labelledby="find-us-heading">
+                <h2 id="find-us-heading">Find us</h2>
+                <dl class="contact-list">
+                    <div>
+                        <dt>Address</dt>
+                        <dd><address id="restaurant-address">Loading address</address></dd>
+                    </div>
+                    <div>
+                        <dt>Phone</dt>
+                        <dd><a id="restaurant-phone" href="#find-us">Loading phone number</a></dd>
+                    </div>
+                </dl>
+                <a id="map-link" class="text-link" href="#find-us" target="_blank" rel="noopener">Open in Maps</a>
+            </section>
+
+        </div>
+
+        <p id="load-error" class="load-error wrap" role="alert" hidden>
+            We couldn't load the restaurant details. Refresh the page to try again.
+        </p>
+
+    </main>
+
+    <div id="message" class="toast" role="status" aria-live="polite"></div>
+
+    <div id="cart-overlay" class="cart-overlay" hidden></div>
+
+    <aside id="cart-panel" class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-heading" aria-hidden="true" tabindex="-1">
+        <header class="cart-panel-head">
+            <h2 id="cart-heading">Your cart</h2>
+            <button id="close-cart" class="cart-close" type="button" aria-label="Close cart">&times;</button>
+        </header>
+
+        <div id="cart-items" class="cart-items"></div>
+
+        <div class="cart-panel-foot">
+            <div id="cart-totals" class="cart-totals"></div>
+            <p id="promo-summary" class="promo-summary" role="status" aria-live="polite"></p>
+            <button id="open-promo" class="button button-sauce" type="button">Have a promo code?</button>
+            <button id="clear-cart" class="cart-clear" type="button">Empty cart</button>
+            <p class="cart-note">Checkout isn't built yet. Prices and tax are calculated by the server, and promo savings are an estimate.</p>
+        </div>
+    </aside>
+
+    <dialog id="customize-dialog" class="sheet" aria-labelledby="customize-title">
+        <form id="customize-form">
+            <div class="sheet-head">
+                <h2 id="customize-title">Customize pizza</h2>
+                <button id="close-customize" class="sheet-close" type="button" aria-label="Close">&times;</button>
+            </div>
+            <p id="customize-description" class="sheet-description"></p>
+            <div id="customize-options" class="customize-options"></div>
+            <label class="field-label" for="add-quantity">Quantity</label>
+            <input id="add-quantity" name="quantity" type="number" min="1" max="99" value="1" required>
+            <button class="button button-sauce wide" type="submit">Add to cart</button>
+        </form>
+    </dialog>
+
+    <dialog id="promo-dialog" class="sheet promo-sheet" aria-labelledby="promo-title">
+        <form id="promo-form">
+            <div class="sheet-head">
+                <h2 id="promo-title">Promo code</h2>
+                <button id="close-promo" class="sheet-close" type="button" aria-label="Close">&times;</button>
+            </div>
+            <p id="promo-description" class="sheet-description">Enter a code to check your discount.</p>
+            <label class="field-label" for="promo-code">Promo code</label>
+            <input id="promo-code" name="code" type="text" autocomplete="off" maxlength="64" required>
+            <button class="button button-sauce wide" type="submit">Check code</button>
+            <p id="promo-result" class="promo-result" role="status" aria-live="polite"></p>
+        </form>
+    </dialog>
+
+    <footer class="footer">
+        <div class="wrap footer-inner">
+            <p class="footer-name">Pizza Pie Parlor</p>
+            <p class="footer-meta"><span id="footer-address"></span> <span id="footer-phone" class="footer-phone"></span></p>
+        </div>
+    </footer>
+</body>
+</html>

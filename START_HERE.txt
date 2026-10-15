@@ -1,0 +1,50 @@
+﻿START HERE - PIZZA PIE PARLOR TEAM HANDOFF v2.5.0
+==================================================
+This is an upgrade of the original v2.1.3 backend, with a working 7.1
+shopping cart UI and strengthened 7.2 cart API. The current backend
+package version is 2.2.0. The space-themed design is temporary.
+
+WINDOWS LAUNCH
+1. Extract the entire ZIP and open the folder containing package.json.
+2. Open PowerShell in this directory and run:
+
+   $env:Path = "C:\Program Files\nodejs;$env:Path"
+   npm.cmd ci
+   npm.cmd test
+   npm.cmd start
+
+3. Open http://127.0.0.1:3000/team-demo.html in your browser.
+4. To stop the server, press Ctrl+C.
+
+IMPORTANT: The address works only on the same computer running Node.
+Do not double-click public/team-demo.html to run the live site.
+
+WHERE TO GO NEXT
+- README.txt                    Current whole-project explanation
+- UPGRADE_FROM_v2.1.3.txt       What carries over from original backend
+- DESIGN_EDITING_GUIDE.txt      Colors, imagery, layout, copy
+- REQUIREMENTS_7_1_7_2.txt     Sprint requirements
+- docs\history\README_BACKEND_v2.1.3.txt  Detailed original backend notes
+- OPEN_HANDOFF.html             Clickable guide (open in browser)
+
+DESIGN-SAFE FILES
+- public\cart-demo\css\planet-theme.css
+- public\cart-demo\css\promo-modal.css
+- public\team-demo.html
+- public\cart-demo\js\site-content.js
+- public\cart-demo\js\view.js (advanced - markup)
+
+Keep API.js, cart.js, main.js, promo-preview.js, backend services, and
+JavaScript-bound HTML IDs unchanged when only redesigning the website.
+The old cart-demo.html page has a separate style from team-demo.html.
+
+TEST BEFORE HANDOFF
+- All tests pass using npm.cmd test
+- Menu shows four products, customization works, cart add/update/remove
+- PIZZA20 updates the visible estimated total while cart stays open
+- Promo estimate clears after cart changes; Console has no errors
+- Team reviews and approves any merge/design decision
+
+LIMITATIONS
+Carts are in-memory. Promo discounts are DISPLAY-ONLY estimates;
+tax and payment are not finalized. This is not a deployed website.

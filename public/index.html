@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pizza Pie Parlor Backend Prototype</title>
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+
+<main class="container">
+
+    <header>
+        <h1>Pizza Pie Parlor Backend Prototype</h1>
+
+        <p>
+            CS492 portable local API demonstration.
+            This page is a test interface for backend functionality
+            and is not the final production frontend.
+        </p>
+    </header>
+
+
+    <!-- Task 1.2 -->
+    <section class="card">
+
+        <div class="section-heading">
+            <div>
+                <span class="task">Task 1.2</span>
+                <h2>Restaurant Information API</h2>
+            </div>
+
+            <span id="restaurant-status" class="status">
+                Testing...
+            </span>
+        </div>
+
+        <h3 id="restaurant-name"></h3>
+
+        <p id="restaurant-description"></p>
+
+        <div class="info-grid">
+
+            <div>
+                <strong>Address</strong>
+                <p id="restaurant-address"></p>
+            </div>
+
+            <div>
+                <strong>Phone</strong>
+                <p id="restaurant-phone"></p>
+            </div>
+
+        </div>
+
+        <h3>Hours</h3>
+
+        <ul id="restaurant-hours"></ul>
+
+        <details>
+            <summary>View raw API response</summary>
+
+            <pre id="restaurant-raw"></pre>
+        </details>
+
+    </section>
+
+
+    <!-- Task 6.2 -->
+    <section class="card">
+
+        <div class="section-heading">
+            <div>
+                <span class="task">Task 6.2</span>
+                <h2>Promotions Backend</h2>
+            </div>
+
+            <span id="promotions-status" class="status">
+                Testing...
+            </span>
+        </div>
+
+        <p>
+            Active promotions returned by
+            <code>GET /api/promotions</code>.
+        </p>
+
+        <div id="promotion-list" class="promotion-grid"></div>
+
+        <details>
+            <summary>View raw API response</summary>
+
+            <pre id="promotions-raw"></pre>
+        </details>
+
+    </section>
+
+
+    <!-- Task 9.2 -->
+    <section class="card">
+
+        <div class="section-heading">
+            <div>
+                <span class="task">Task 9.2</span>
+                <h2>Promotion Code Validation</h2>
+            </div>
+
+            <span id="validation-status" class="status">
+                Ready
+            </span>
+        </div>
+
+        <p>
+            Test
+            <code>POST /api/promotions/validate</code>
+            using a promotion code and cart subtotal.
+        </p>
+
+        <form id="promo-form">
+
+            <label>
+                Promotion Code
+                <input
+                    id="promo-code"
+                    type="text"
+                    value="PIZZA20"
+                    required
+                >
+            </label>
+
+            <label>
+                Cart Subtotal
+                <input
+                    id="subtotal"
+                    type="number"
+                    value="50"
+                    min="0"
+                    step="0.01"
+                    required
+                >
+            </label>
+
+            <button type="submit">
+                Validate Promotion
+            </button>
+
+        </form>
+
+        <div id="validation-result" class="validation-result">
+            Enter a code and subtotal to test the API.
+        </div>
+
+        <details>
+            <summary>View raw API response</summary>
+
+            <pre id="validation-raw"></pre>
+        </details>
+
+    </section>
+
+
+    <footer>
+        <strong>Available backend endpoints</strong>
+
+        <pre>GET  /api/restaurant
+GET  /api/promotions
+POST /api/promotions/validate</pre>
+    </footer>
+
+</main>
+
+<script src="/app.js"></script>
+
+</body>
+</html>

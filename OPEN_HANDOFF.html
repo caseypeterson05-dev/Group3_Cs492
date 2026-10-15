@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pizza Pie Parlor | Team Handoff</title>
+  <style>
+    :root {color-scheme:dark; font-family:Arial, sans-serif;}
+    body {margin:0; background:#102243; color:#eef3ff; line-height:1.65;}
+    main {max-width:940px; margin:auto; padding:28px 22px 50px;}
+    h1 {color:#ffde5f; margin-bottom:0;}
+    h2 {font-size:1.24rem; margin-top:0;}
+    .note {color:#cad6ee;}
+    section {background:#1b355c; border:1px solid #3e5880; border-radius:12px;
+             padding:20px; margin:16px 0;}
+    a {color:#ffdf6b; text-underline-offset:3px;}
+    li {margin:6px 0;}
+    code, pre {background:#0d213d; color:#f6f7ff; padding:3px 6px; border-radius:5px;}
+    pre {white-space:pre-wrap; padding:12px;}
+    .warning {border-left:4px solid #ffde5f; padding-left:12px;}
+  </style>
+</head>
+<body><main>
+  <h1>Pizza Pie Parlor — Team Handoff v2.5.0</h1>
+  <p class="note">Upgrade of the original v2.1.3 backend: Sprint 7.1 cart UI + Sprint 7.2 cart API. The retro space look is a replaceable reference.</p>
+  <section><h2>1. Start the working demo</h2>
+    <p>Extract the ZIP completely. Open PowerShell in the folder that contains package.json, then run:</p>
+    <pre>npm.cmd ci
+npm.cmd test
+npm.cmd start</pre>
+    <p><a href="http://127.0.0.1:3000/team-demo.html">Open the LIVE Pizza Pie Parlor demo (server required)</a></p>
+    <p><a href="http://127.0.0.1:3000/api/menu">Check the LIVE menu API (server required)</a></p>
+    <p class="warning">Both links use localhost and only work on the computer running the server. This HTML guide itself can be opened without Node.</p>
+  </section>
+  <section><h2>2. Read the instructions in Notepad</h2>
+    <ul>
+      <li><a href="README.txt">README.txt — current project overview</a></li>
+      <li><a href="UPGRADE_FROM_v2.1.3.txt">UPGRADE_FROM_v2.1.3.txt — what changed since the original ZIP</a></li>
+      <li><a href="START_HERE.txt">START_HERE.txt — short setup</a></li>
+      <li><a href="DESIGN_EDITING_GUIDE.txt">DESIGN_EDITING_GUIDE.txt — what designers edit</a></li>
+      <li><a href="DOCUMENT_INDEX.txt">DOCUMENT_INDEX.txt — all important source files</a></li>
+      <li><a href="REQUIREMENTS_7_1_7_2.txt">REQUIREMENTS_7_1_7_2.txt — what the tasks cover</a></li>
+      <li><a href="TROUBLESHOOTING.txt">TROUBLESHOOTING.txt — common setup issues</a></li>
+      <li><a href="docs/TASK_7_2_CART_API.txt">Cart API reference (plain text)</a></li>
+      <li><a href="docs/FRONTEND_INTEGRATION.txt">Frontend integration notes (plain text)</a></li>
+      <li><a href="docs/TESTING.txt">Testing guide (plain text)</a></li>
+    </ul>
+    <p>Clicking a source file may display it in your browser; to <b>edit</b> it, right-click the file in Windows Explorer and choose <b>Open with → Notepad</b>.</p>
+  </section>
+  <section><h2>3. Original backend documentation (preserved)</h2>
+    <p>The original backend README covered Tasks 1.2, 6.2 and 9.2, API architecture, portability, smoke tests, and integration. The exact original is archived; today's launch steps are in README.txt.</p>
+    <ul>
+      <li><a href="docs/history/README_BACKEND_v2.1.3.txt">Original backend README — readable in Notepad</a></li>
+      <li><a href="docs/history/README_BACKEND_v2.1.3.md">Original backend README — exact original Markdown</a></li>
+      <li><a href="docs/history/CHANGELOG_BACKEND_v2.1.3.txt">Original backend changelog — Notepad version</a></li>
+      <li><a href="docs/history/ABOUT_THIS_ARCHIVE.txt">Why the older documents are archived</a></li>
+    </ul>
+  </section>
+  <section><h2>4. Visual files to edit</h2>
+    <ul>
+      <li><a href="public/cart-demo/css/planet-theme.css">Current space theme: colors, cards and layout</a></li>
+      <li><a href="public/cart-demo/css/promo-modal.css">Promo pop-up styling</a></li>
+      <li><a href="public/team-demo.html">Team homepage HTML, text and truck SVG (source file, not a running preview)</a></li>
+      <li><a href="public/cart-demo/js/site-content.js">Cart and promo labels</a></li>
+      <li><a href="public/cart-demo/js/view.js">Live menu/cart markup (advanced)</a></li>
+    </ul>
+    <p class="note">Do not change the server or API modules just to restyle the website. The promo discount remains a visual estimate.</p>
+  </section>
+</main></body>
+</html>

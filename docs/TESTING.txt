@@ -1,0 +1,65 @@
+﻿Backend Testing Guide
+
+Automated test suite
+
+Install dependencies first:
+npm install
+
+Run all tests:
+npm test
+
+Windows PowerShell alternative:
+npm.cmd test
+
+Verbose output:
+npm run test:verbose
+
+What the automated tests cover
+
+- health/status endpoint
+- API version/request IDs
+- restaurant required fields
+- percentage promotion calculation
+- fixed promotion calculation
+- promotion minimum subtotal failures
+- case-insensitive promo codes
+- invalid subtotals
+- menu data
+- invalid menu IDs
+- invalid toppings
+- duplicate topping de-duplication
+- cart add/view/update/delete
+- identical-line cart merging
+- topping-order-independent cart merging
+- separation of different customizations
+- bad quantities
+- independent carts through X-Cart-Id
+- delivery inside/outside radius
+- invalid delivery coordinates
+- raw card-data rejection
+- malformed JSON
+- unknown routes
+- security response headers
+
+Smoke test
+
+The smoke test is intended for a quick team/demo verification against an already-running server.
+
+Start the server:
+npm start
+
+In a second terminal:
+npm run smoke
+
+Windows:
+npm.cmd run smoke
+
+A successful run ends with:
+All smoke tests passed.
+
+Custom server URL
+
+The smoke test defaults to:
+http://127.0.0.1:3000
+
+Set BASE_URL to test another local/team environment.
