@@ -3,6 +3,7 @@ const path = require("path");
 
 const config = require("./config");
 const apiRouter = require("./routes");
+const paymentRoutes = require("./routes/payments");
 const {
     securityHeaders,
     optionalCors
@@ -21,6 +22,11 @@ function createApp() {
     app.use(requestContext);
     app.use(securityHeaders);
     app.use(optionalCors(config.corsOrigin));
+    // Stripe signs the EXACT raw request bytes. This route must precede JSON parsing.
+    app.post("/api/payments/webhook",
+        express.raw({ type: "application/json", limit: "64kb" }),
+        paymentRoutes.handleWebhook
+    );
     app.use(
         express.json({
             limit: "64kb",
@@ -29,6 +35,10 @@ function createApp() {
     );
 
     app.use("/api", apiRouter);
+
+    // Default to Steel's restaurant homepage. Keep team-demo.html accessible separately.
+    app.get("/", (req, res) => res.redirect(302, "/home/"));
+    app.get("/cart-demo.html", (req, res) => res.redirect(302, "/home/"));
 
     app.use(
         express.static(

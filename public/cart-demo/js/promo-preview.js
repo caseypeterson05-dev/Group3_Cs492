@@ -1,14 +1,17 @@
-/** Simple display-only promo math. No payment or checkout decisions belong here. */
+/** Presentation-only preview; backend independently validates promos at checkout. */
 export function createPromoPreview(cart, promo) {
   if (!cart || !promo?.pricing) return null;
   const discount = Number(promo.pricing.discountAmount);
   if (!Number.isFinite(discount) || discount < 0 ||
       Math.abs(Number(promo.pricing.originalSubtotal) - cart.subtotal) > 0.01) return null;
   const safeDiscount = Math.min(discount, cart.subtotal);
-  // Keep the backend-provided tax unchanged rather than pretend to know
-  // how checkout recalculates taxes for a discounted order.
+  // Mirror the flat-rate prototype's server-side tax-on-discounted-subtotal.
+  // Only the server/Stripe control the actual charge.
+  const discountedSubtotal = Number((cart.subtotal - safeDiscount).toFixed(2));
+  const estimatedTax = Number((discountedSubtotal * cart.taxRate).toFixed(2));
   return {
     discount: safeDiscount,
-    estimatedTotal: Number(Math.max(0, cart.total - safeDiscount).toFixed(2))
+    estimatedTax,
+    estimatedTotal: Number((discountedSubtotal + estimatedTax).toFixed(2))
   };
 }

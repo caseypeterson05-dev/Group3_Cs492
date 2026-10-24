@@ -19,6 +19,11 @@ function getCart(cartId) {
     if (!carts.has(id)) {
         carts.set(id, {
             id,
+            // Identifies this in-memory cart instance and its current contents.
+            // Stripe checkout snapshots these fields; replaying an old paid Session
+            // must never erase a later cart, even if it contains identical pizzas.
+            instanceId: randomUUID(),
+            revision: 0,
             items: []
         });
     }
@@ -152,6 +157,7 @@ function addItem(cartId, payload) {
         existing.lineTotal = Number(
             (existing.unitPrice * combinedQuantity).toFixed(2)
         );
+        cart.revision++;
 
         return {
             valid: true,
@@ -179,6 +185,7 @@ function addItem(cartId, payload) {
     };
 
     cart.items.push(line);
+    cart.revision++;
 
     return {
         valid: true,
@@ -212,6 +219,7 @@ function updateItem(cartId, lineId, quantityValue) {
     line.quantity = quantity;
     line.lineTotal =
         Number((line.unitPrice * quantity).toFixed(2));
+    cart.revision++;
 
     return {
         valid: true,
@@ -233,6 +241,7 @@ function removeItem(cartId, lineId) {
     }
 
     const [removed] = cart.items.splice(index, 1);
+    cart.revision++;
 
     return {
         valid: true,
@@ -244,7 +253,22 @@ function removeItem(cartId, lineId) {
 function clearCart(cartId) {
     const cart = getCart(cartId);
     cart.items = [];
+    cart.revision++;
     return serializeCart(cart);
+}
+
+// Only the server may call this after retrieving a *paid* Stripe Checkout Session.
+// Match the exact cart snapshot that was purchased. No persisted orders exist yet.
+function clearPaidCart(cartId, instanceId, revision) {
+    const cart = getCart(cartId);
+    if (typeof instanceId !== "string" || !instanceId ||
+        !Number.isSafeInteger(revision) || revision < 0 ||
+        cart.instanceId !== instanceId || cart.revision !== revision ||
+        cart.items.length === 0) {
+        return false;
+    }
+    clearCart(cartId);
+    return true;
 }
 
 function resetAllCarts() {
@@ -258,5 +282,6 @@ module.exports = {
     updateItem,
     removeItem,
     clearCart,
+    clearPaidCart,
     resetAllCarts
 };

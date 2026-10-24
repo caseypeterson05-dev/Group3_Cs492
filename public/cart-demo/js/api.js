@@ -40,5 +40,13 @@ export const api = {
     method: 'PATCH', body: JSON.stringify({ quantity })
   }),
   remove: lineId => request(`/cart/items/${encodeURIComponent(lineId)}`, { method: 'DELETE' }),
-  clear: () => request('/cart', { method: 'DELETE' })
+  clear: () => request('/cart', { method: 'DELETE' }),
+  checkoutStatus: () => request('/payments/status'),
+  startCheckout: (promoCode = null) => request('/payments/create-session', {
+    method: 'POST', body: JSON.stringify({ returnPage: window.location.pathname, promoCode })
+  }),
+  checkoutResult: sessionId => request(`/payments/session?session_id=${encodeURIComponent(sessionId)}`),
+  completeCheckout: sessionId => request('/payments/complete-session', {
+    method: 'POST', body: JSON.stringify({ sessionId })
+  })
 };

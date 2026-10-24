@@ -36,6 +36,9 @@ router.get("/", (req, res) => {
             "POST /api/delivery/validate",
             "GET /api/payments/status",
             "POST /api/payments/create-session",
+            "GET /api/payments/session?session_id=...",
+            "POST /api/payments/complete-session",
+            "POST /api/payments/webhook",
             "GET /api/openapi.yaml"
         ]
     });

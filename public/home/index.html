@@ -38,6 +38,9 @@
         </div>
     </header>
 
+    <!-- Persistent, visible confirmation after returning from Stripe Checkout. -->
+    <section id="checkout-notice" class="checkout-notice wrap" role="status" aria-live="polite" hidden></section>
+
     <main id="main">
 
         <section class="hero" aria-labelledby="restaurant-name">
@@ -159,7 +162,9 @@
             <p id="promo-summary" class="promo-summary" role="status" aria-live="polite"></p>
             <button id="open-promo" class="button button-sauce" type="button">Have a promo code?</button>
             <button id="clear-cart" class="cart-clear" type="button">Empty cart</button>
-            <p class="cart-note">Checkout isn't built yet. Prices and tax are calculated by the server, and promo savings are an estimate.</p>
+            <button id="checkout-stripe" class="button button-sauce wide" type="button">Pay with Stripe (TEST)</button>
+            <p id="checkout-result" class="cart-checkout-result" role="status" aria-live="polite"></p>
+            <p class="cart-note">Stripe sandbox checkout only. Valid promo codes are rechecked and applied at Stripe Checkout. No real payments or order fulfillment.</p>
         </div>
     </aside>
 
