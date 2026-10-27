@@ -802,6 +802,10 @@ body.cart-is-open {
     text-align: center;
 }
 
+/* Stripe test-mode checkout status is shown inside the existing cart drawer. */
+.cart-checkout-result { margin: 0; font-size: .9rem; line-height: 1.5; color: var(--ink); }
+.cart-checkout-result:empty { display: none; }
+
 /* Customize and promo dialogs */
 
 .sheet {
@@ -1076,3 +1080,19 @@ body.cart-is-open {
         transition: none;
     }
 }
+
+/* Stripe sandbox checkout result: clearly visible above the homepage content. */
+.checkout-notice:not([hidden]) {
+    display: block;
+    margin-block: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid #b6aa98;
+    border-left: 4px solid #70614d;
+    border-radius: .5rem;
+    background: #f7f4ed;
+    color: #272727;
+    font-weight: 600;
+    line-height: 1.45;
+}
+.checkout-notice[data-state="success"] { border-left-color: #327b55; background: #f1f8f2; }
+.checkout-notice[data-state="warning"] { border-left-color: #b77626; background: #fff8ef; }

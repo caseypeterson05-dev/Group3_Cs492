@@ -88,7 +88,7 @@
   <aside class="cart-panel" id="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-heading" aria-hidden="true" tabindex="-1">
     <header class="panel-heading"><div><p class="eyebrow">Your order</p><h2 id="cart-heading">Your Cart</h2></div><button class="icon-button" id="close-cart" aria-label="Close cart">×</button></header>
     <div id="cart-items" class="cart-items"></div>
-    <div class="cart-footer"><div id="cart-totals"></div><div id="promo-summary" class="promo-summary" role="status" aria-live="polite"></div><div class="cart-actions"><button id="open-promo" class="button button-primary" type="button">Have a promo code?</button><button id="clear-cart" class="button button-subtle" type="button">Empty cart</button></div><p class="checkout-note">Promo discounts and updated totals are estimates only. Backend checkout/payment is not implemented.</p></div>
+    <div class="cart-footer"><div id="cart-totals"></div><div id="promo-summary" class="promo-summary" role="status" aria-live="polite"></div><div class="cart-actions"><button id="open-promo" class="button button-primary" type="button">Have a promo code?</button><button id="clear-cart" class="button button-subtle" type="button">Empty cart</button></div><button id="checkout-stripe" class="button button-primary wide" type="button">Pay with Stripe (TEST)</button><p id="checkout-result" class="checkout-note" role="status" aria-live="polite"></p><p class="checkout-note">Sandbox Checkout only. Valid promo codes are rechecked and applied at Stripe Checkout. No real payments or order fulfillment.</p></div>
   </aside>
   <dialog id="customize-dialog" aria-labelledby="customize-title">
     <form id="customize-form">

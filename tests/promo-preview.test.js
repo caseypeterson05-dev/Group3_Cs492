@@ -7,9 +7,9 @@ const source = fs.readFileSync(path.join(__dirname, '../public/cart-demo/js/prom
 const modulePromise = import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
 test('promotion changes the preview total without mutating cart totals', async () => {
  const {createPromoPreview} = await modulePromise;
- const cart={subtotal:52.47,tax:3.80,total:56.27};
+ const cart={subtotal:52.47,taxRate:0.0725,tax:3.80,total:56.27};
  const result=createPromoPreview(cart,{code:'PIZZA20',pricing:{discountAmount:10.49,originalSubtotal:52.47}});
- assert.deepEqual(result,{discount:10.49,estimatedTotal:45.78});
+ assert.deepEqual(result,{discount:10.49,estimatedTax:3.04,estimatedTotal:45.02});
  assert.equal(cart.total,56.27);
 });
 test('old promo estimates are invalid after subtotal changes', async () => {

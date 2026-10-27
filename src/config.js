@@ -1,4 +1,5 @@
 const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, "..", ".env"), quiet: true });
 
 function numberFromEnv(name, fallback) {
     const value = Number(process.env[name]);
@@ -21,5 +22,8 @@ module.exports = {
     },
     corsOrigin: process.env.FRONTEND_ORIGIN || "",
     trustProxy: String(process.env.TRUST_PROXY || "") === "1",
-    paymentProvider: process.env.PAYMENT_PROVIDER || ""
+    paymentProvider: process.env.PAYMENT_PROVIDER || "",
+    stripeSecretKey: process.env.STRIPE_SECRET_KEY || "",
+    stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET || "",
+    checkoutBaseUrl: process.env.CHECKOUT_BASE_URL || "http://127.0.0.1:3000"
 };

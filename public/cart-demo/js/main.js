@@ -127,31 +127,33 @@ $('customize-form').addEventListener('submit', event => {
 
 
 // ---- Promo-code modal and estimated savings display. ----
-// The backend cart returns the authoritative subtotal, tax, and total.
-// /api/promotions/validate only previews eligibility/discount; it does not
-// persist a discount to the cart or change final order pricing.
+// The cart holds original totals; selected promo CODE is sent to /payments/create-session.
+// The backend revalidates the code and applies a Stripe sandbox coupon. The client
+// estimate is informational, not the authority for the amount charged.
 const promoDialog = $('promo-dialog');
 let promoPreview = null;
 
 function showPromoPreview(currentCart) {
-  // Cart amounts from /api/cart stay authoritative. The discount is only a
-  // displayed estimate because the backend has no checkout promo application.
   const totals = $('cart-totals');
   totals.querySelectorAll('.promo-preview-row').forEach(row => row.remove());
-  const serverTotal = totals.querySelector('.total-row:last-child');
-  if (serverTotal && !promoPreview) { serverTotal.classList.add('grand'); serverTotal.firstChild.textContent = 'Total'; }
+  const originalRows = [...totals.querySelectorAll('.total-row')];
+  const taxRow = originalRows[1], serverTotal = originalRows[2];
+  if (taxRow) taxRow.firstChild.textContent = 'Tax';
+  if (serverTotal) { serverTotal.classList.add('grand'); serverTotal.firstChild.textContent = 'Total'; }
   if (!promoPreview || !currentCart?.items?.length) return;
   const preview = createPromoPreview(currentCart, promoPreview);
   if (!preview) return;
 
   const discountRow = element('div', 'total-row promo-preview-row promo-discount-row');
   discountRow.append(element('span', '', `Promo (${promoPreview.code})`), element('strong', '', `−${money(preview.discount)}`));
-  // Rename the server total rather than showing two competing grand totals.
+  if (taxRow) taxRow.firstChild.textContent = 'Tax before promo';
   if (serverTotal) { serverTotal.classList.remove('grand'); serverTotal.firstChild.textContent = 'Total before promo'; }
+  const taxAfterRow = element('div', 'total-row promo-preview-row');
+  taxAfterRow.append(element('span', '', 'Tax after promo'), element('strong', '', money(preview.estimatedTax)));
   const totalRow = element('div', 'total-row grand promo-preview-row');
-  totalRow.append(element('span', '', 'Estimated total after promo'), element('strong', '', money(preview.estimatedTotal)));
-  totals.append(discountRow, totalRow);
-  $('promo-summary').textContent = `Estimated savings: ${money(preview.discount)}. Preview uses the current tax amount; checkout pricing is not implemented.`;
+  totalRow.append(element('span', '', 'Estimated Stripe total'), element('strong', '', money(preview.estimatedTotal)));
+  totals.append(discountRow, taxAfterRow, totalRow);
+  $('promo-summary').textContent = `Promo ${promoPreview.code} will be applied in Stripe Checkout after server-side revalidation. Estimated savings: ${money(preview.discount)}.`;
 }
 function updatePromoCopy() {
   $('cart-heading').textContent = siteContent.cartTitle;
@@ -194,12 +196,88 @@ $('promo-form').addEventListener('submit', async event => {
     }
     promoPreview = { code: result.promotion.code, pricing: result.pricing };
     showPromoPreview(currentCart);
-    resultNode.textContent = `Valid: ${result.promotion.title}. Estimated savings: ${money(result.pricing.discountAmount)}. See the updated estimate in your cart. This is a preview only.`;
+    resultNode.textContent = `Applied: ${result.promotion.title}. Estimated savings: ${money(result.pricing.discountAmount)}. Stripe will apply this code after server validation.`;
   } catch (error) { resultNode.textContent = error.message; }
 });
 updatePromoCopy();
 
+// Stripe Checkout works with the existing cart on both /home/ and /team-demo.html.
+const stripeButton = $('checkout-stripe');
+if (stripeButton) {
+  stripeButton.addEventListener('click', () => safely(async () => {
+    if (!cart.current()?.items?.length) {
+      message('Add an item to the cart before checkout.', true);
+      return;
+    }
+    stripeButton.disabled = true;
+    stripeButton.textContent = 'Opening Stripe test checkout…';
+    try {
+      const result = await api.startCheckout(promoPreview?.code || null);
+      if (!result?.url?.startsWith('https://checkout.stripe.com/')) {
+        throw new Error('Stripe did not return a secure Checkout URL.');
+      }
+      window.location.assign(result.url);
+    } finally {
+      stripeButton.disabled = false;
+      stripeButton.textContent = 'Pay with Stripe (TEST)';
+    }
+  }));
+}
+
+// Keep checkout feedback visible on the restaurant page, not only inside the cart.
+function showCheckoutNotice(text, state = 'info') {
+  const result = $('checkout-result');
+  if (result) result.textContent = text;
+  const notice = $('checkout-notice');
+  if (notice) {
+    notice.hidden = false;
+    notice.dataset.state = state;
+    notice.textContent = text;
+  }
+}
+
+async function reportCheckoutReturn() {
+  const params = new URLSearchParams(window.location.search);
+  const outcome = params.get('checkout');
+  if (outcome !== 'success' && outcome !== 'cancel') return;
+
+  if (outcome === 'cancel') {
+    showCheckoutNotice('Stripe test checkout was cancelled. No payment was made.', 'info');
+  } else {
+    const sessionId = params.get('session_id');
+    if (!sessionId) {
+      showCheckoutNotice('Stripe returned to the restaurant, but no Checkout Session ID was provided. Check your Stripe sandbox payment history.', 'warning');
+    } else {
+      showCheckoutNotice('Verifying your Stripe sandbox payment…', 'info');
+      try {
+        const status = await api.completeCheckout(sessionId);
+        if (status.paid) {
+          const amount = Number.isInteger(status.amountTotal)
+            ? ` for ${(status.amountTotal / 100).toLocaleString('en-US', { style: 'currency', currency: (status.currency || 'usd').toUpperCase() })}`
+            : '';
+          const promo = status.promoCode ? ` (promo ${status.promoCode} applied)` : '';
+          const cartMessage = status.cartCleared
+            ? ' Purchased items were removed from your cart.'
+            : ' Your cart was left intact because it changed since checkout, was already cleared, or the server restarted.';
+          showCheckoutNotice(`Payment confirmed${amount}${promo} in Stripe sandbox.${cartMessage} Test transaction only; no order was saved or fulfilled.`, 'success');
+        } else {
+          showCheckoutNotice(`Stripe returned, but payment has not been confirmed (${status.paymentStatus || 'unknown'}). Check the sandbox dashboard.`, 'warning');
+        }
+      } catch (error) {
+        // A network/session error is NOT evidence that a payment failed.
+        showCheckoutNotice(`Payment confirmation could not be verified in the app: ${error.message}. Check your Stripe sandbox payment history.`, 'warning');
+      }
+    }
+  }
+  // Do not leave the Stripe Session ID in the address bar after processing.
+  window.history.replaceState(null, '', window.location.pathname + window.location.hash);
+  // For alternate team demo pages without a top-level notice, reveal cart result.
+  if (!$('checkout-notice')) openCart();
+}
+
 async function initialize() {
+  // Payment verification must not depend on the restaurant menu/cart API succeeding.
+  await reportCheckoutReturn();
   try {
     [menu] = await Promise.all([api.menu(), cart.load()]);
     renderMenu($('menu-content'), menu, selectItem);
