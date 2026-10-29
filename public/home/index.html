@@ -14,6 +14,8 @@
     <script type="module" src="/cart-demo/js/main.js"></script>
     <!-- Homepage wording for that shared code. Must load after main.js. -->
     <script type="module" src="/home/home-cart.js"></script>
+    <!-- Task 3.2: live price in the customize pop-up. -->
+    <script src="/home/live-price.js" defer></script>
 </head>
 
 <body>
@@ -191,6 +193,10 @@
             <div id="customize-options" class="customize-options"></div>
             <label class="field-label" for="add-quantity">Quantity</label>
             <input id="add-quantity" name="quantity" type="number" min="1" max="99" value="1" required>
+            <div class="live-price" aria-live="polite">
+                <p id="live-price-total" class="live-price-total"></p>
+                <p id="live-price-unit" class="live-price-unit"></p>
+            </div>
             <button class="button button-sauce wide" type="submit">Add to cart</button>
         </form>
     </dialog>

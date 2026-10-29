@@ -1258,3 +1258,35 @@ body.cart-is-open {
 }
 .checkout-notice[data-state="success"] { border-left-color: #327b55; background: #f1f8f2; }
 .checkout-notice[data-state="warning"] { border-left-color: #b77626; background: #fff8ef; }
+
+/* Task 3.2: live price in the customize pop-up (filled in by /home/live-price.js) */
+
+.live-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background: #fdf3d8;
+}
+
+.live-price p {
+    margin: 0;
+}
+
+.live-price-total {
+    font-family: var(--font-sign);
+    font-size: 1.375rem;
+    color: var(--felt);
+}
+
+.live-price-unit {
+    font-size: 0.9375rem;
+    color: var(--ink-soft);
+}
+
+.live-price + .button.wide {
+    margin-top: 12px;
+}
